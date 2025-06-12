@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:js": "mocha \"tWebserverBrowser/test/**/*.test.js\"",
+    "test": "vitest run",
+    "test:ui": "vitest --ui"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^24.0.1",
-    "typescript": "^5.8.3"
+    "@vitest/ui": "^3.2.3",
+    "jsdom": "^26.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.3"
   },
   "description": "",
   "dependencies": {

@@ -7,10 +7,10 @@ const PORT = 3000;
 // Serve static files from the browser folder
 app.use(express.static(path.resolve(__dirname, "../../tWebserverBrowser")));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../../tWebserverBrowser/index.html"));
-});
+// Serve the main file directory
+app.use(express.static(path.join(__dirname, '../../tWebserverBrowser')));
 
+// Serve the main JavaScript file
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
