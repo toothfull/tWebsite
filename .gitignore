@@ -1,0 +1,11 @@
+# Node dependencies
+node_modules/
+tWebserverServer/node_modules/
+
+# Build outputs
+dist/
+tWebserverServer/dist/
+
+# TypeScript compiled JavaScript
+*.js
+!*.config.js   # allow config files like tsconfig.js or webpack.config.js if needed
