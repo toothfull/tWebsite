@@ -1,20 +1,18 @@
-# Use Node.js 20 base image
+# Use an official Node.js runtime as a parent image
 FROM node:20
 
-# Set working directory
+# Create app directory
 WORKDIR /app
 
-# Copy package files
+# Install app dependencies
 COPY package*.json ./
-
-# Install dependencies
 RUN npm install
 
-# Copy the rest of the app
+# Copy app source code
 COPY . .
 
-# Build TypeScript
+# Build TypeScript files
 RUN npm run build
 
-# Run the compiled output
+# Start the app
 CMD ["node", "tWebserverServer/dist/main.js"]
