@@ -26,4 +26,13 @@ jobs: # Run Vitest tests for TypeScript and JavaScript
         run: npm run lint  
         
       - name: Run tests # Run Vitest tests (vitest.config.ts & vitest.config.js is used for configuration)
-        run: npm test
+        run: npm test\
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u "${{ secrets.GHCR_USERNAME }}" --password-stdin
+
+      - name: Build Docker image
+        run: docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/twebsite:latest .
+
+      - name: Push Docker image
+        run: docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/twebsite:latest

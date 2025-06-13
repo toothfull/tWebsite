@@ -6,13 +6,13 @@ import tseslint from 'typescript-eslint';
 export default [
   js.configs.recommended,
 
-  ...tseslint.configs.recommended,
+  ...tseslint.configs.recommended, // Use recommended rules from TypeScript ESLint
 
   {
-    files: ['**/*.ts', '**/*.js'],
-    ignores: ['dist/', 'node_modules/'],
+    files: ['**/*.ts', '**/*.js'], // Apply to all TypeScript and JavaScript files
+    ignores: ['dist/', 'node_modules/'], // Ignore build and dependency directories
 
-    languageOptions: {
+    languageOptions: { // Use ECMAScript modules and latest ECMAScript version
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
