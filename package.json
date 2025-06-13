@@ -6,7 +6,7 @@
     "test": "vitest run",
     "test:ui": "vitest --ui",
     "lint": "eslint . --ext .ts,.js",
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc",
     "start": "node tWebserverServer/dist/main.js"
   },
   "keywords": [],

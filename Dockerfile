@@ -1,20 +1,20 @@
-# Use Node.js base image
+# Use Node.js 20 base image
 FROM node:20
 
-# Create app directory
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package files
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy rest of the code
+# Copy the rest of the app
 COPY . .
 
-# Build the app
+# Build TypeScript
 RUN npm run build
 
-# Run the compiled app
+# Run the compiled output
 CMD ["node", "tWebserverServer/dist/main.js"]
