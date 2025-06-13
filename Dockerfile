@@ -1,21 +1,20 @@
-# Base image
-FROM node:20-alpine
+# Use Node.js base image
+FROM node:20
 
-# Create working directory
+# Create app directory
 WORKDIR /app
 
-# Copy package files and install dependencies
+# Copy package.json and package-lock.json
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy everything else
+# Copy rest of the code
 COPY . .
 
-# Build TypeScript
+# Build the app
 RUN npm run build
 
-# Set working directory to dist folder
-WORKDIR /app/tWebserverServer/dist
-
-# Start server
-CMD ["node", "main.js"]
+# Run the compiled app
+CMD ["node", "tWebserverServer/dist/main.js"]
