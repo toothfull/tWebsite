@@ -69,7 +69,10 @@ jobs:
         run: |
           ssh -i ~/.ssh/id_ed25519 ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
             docker pull ghcr.io/${{ secrets.GHCR_USERNAME }}/twebsite:latest
-            docker stop twebsite || true
-            docker rm twebsite || true
-            docker run -d --name twebsite -p 3000:3000 ghcr.io/${{ secrets.GHCR_USERNAME }}/twebsite:latest
+            docker stop nodeapp || true
+            docker rm nodeapp || true
+            docker stop nginx || true
+            docker rm nginx || true
+            docker run -d --name nodeapp --network webnet ghcr.io/${{ secrets.GHCR_USERNAME }}/twebsite:latest
+            docker run -d --name nginx --network webnet -p 80:80 live-nginx 
           EOF
