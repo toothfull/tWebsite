@@ -60,6 +60,11 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
 
+
+
+        # -v /etc/letsencrypt/live/yourdomain.com:/etc/letsencrypt/live/yourdomain.com:ro \
+
+
       - name: SSH into server and redeploy container # This step connects to the server via SSH and redeploys the Docker container
         run: |
           ssh -i ~/.ssh/id_ed25519 ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
