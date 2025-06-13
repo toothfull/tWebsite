@@ -1,48 +1,49 @@
 name: Run Eslint & Vitest Tests
 
-on:
-  push: # This workflow will run on pushes to the main branch
+on: # This workflow is triggered on pushes and pull requests to the main branch
+  push:
     branches: [ main ]
-  pull_request: # This workflow will run on pull requests targeting the main branch
+  pull_request:
     branches: [ main ]
- 
-jobs: # Run Vitest tests for TypeScript and JavaScript
-  lint-and-vitest: 
-    runs-on: ubuntu-latest # Use the latest Ubuntu runner
+
+jobs:
+  lint-and-vitest: # This job runs ESLint and Vitest tests
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code # Gives access for the ubuntu runner to the repository code
+      - name: Checkout code # This step checks out the repository code and allows the workflow to access it
         uses: actions/checkout@v4
 
-      - name: Use Node.js # Set up Node.js environment
+      - name: Use Node.js # This step sets up Node.js environment for the workflow
         uses: actions/setup-node@v4
         with:
           node-version: 18 
 
-      - name: Install dependencies # Install project dependencies
+      - name: Install dependencies # This step installs the project dependencies using npm
         run: npm ci
-
-      - name: Run ESLint # Run ESLint to check code quality
+ 
+      - name: Run ESLint # This step runs ESLint to check the code for linting errors
         run: npm run lint  
         
-      - name: Run tests # Run Vitest tests (vitest.config.ts & vitest.config.js is used for configuration)
-        run: npm test\
+      - name: Run tests # This step runs Vitest tests to ensure the code is functioning correctly
+        run: npm test
 
-  docker-build-and-push: # Build and push Docker image
+  docker-build-and-push: # This job builds and pushes the Docker image
     runs-on: ubuntu-latest
-    needs: lint-and-vitest # ✅ Only run if lint-and-vitest passes
+    needs: lint-and-vitest
+
     steps:
-      - name: Checkout repo # Gives access for the ubuntu runner to the repository code
+      - name: Checkout repo # This step checks out the repository code for building the Docker image
         uses: actions/checkout@v4
 
-      - name: Set up Docker Buildx # Set up Docker Buildx for building multi-platform images
+      - name: Set up Docker Buildx # This step sets up Docker Buildx for building multi-platform images
         uses: docker/setup-buildx-action@v3
 
-      - name: Log in to GitHub Container Registry # Log in to GitHub Container Registry using secrets
+      - name: Log in to GitHub Container Registry # This step logs in to the GitHub Container Registry using the provided secrets
         run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u "${{ secrets.GHCR_USERNAME }}" --password-stdin
 
-      - name: Build Docker image # Build the Docker image using the Dockerfile in the repository
-        run: docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/twebsite:latest .
+      - name: Build Docker image # This step builds the Docker image using the Dockerfile in the repository
+        run: docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/tWebsite:latest .
 
-      - name: Push Docker image # Push the Docker image to GitHub Container Registry
-        run: docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/twebsite:latest
+      - name: Push Docker image # This step pushes the built Docker image to the GitHub Container Registry
+        run: docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/tWebsite:latest
