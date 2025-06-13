@@ -1,26 +1,29 @@
-name: Run Vitest Tests
+name: Run Eslint & Vitest Tests
 
 on:
-  push:
+  push: # This workflow will run on pushes to the main branch
     branches: [ main ]
-  pull_request:
+  pull_request: # This workflow will run on pull requests targeting the main branch
     branches: [ main ]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
+ 
+jobs: # Run Vitest tests for TypeScript and JavaScript
+  lint-and-vitest: 
+    runs-on: ubuntu-latest # Use the latest Ubuntu runner
 
     steps:
-      - name: Checkout code
+      - name: Checkout code # Gives access for the ubuntu runner to the repository code
         uses: actions/checkout@v4
 
-      - name: Use Node.js
+      - name: Use Node.js # Set up Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 18 
 
-      - name: Install dependencies
+      - name: Install dependencies # Install project dependencies
         run: npm ci
 
-      - name: Run tests
+      - name: Run ESLint # Run ESLint to check code quality
+        run: npm run lint  
+        
+      - name: Run tests # Run Vitest tests (vitest.config.ts & vitest.config.js is used for configuration)
         run: npm test
