@@ -43,7 +43,7 @@ jobs:
         run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u "${{ secrets.GHCR_USERNAME }}" --password-stdin
 
       - name: Build Docker image # This step builds the Docker image using the Dockerfile in the repository
-        run: docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/tWebsite:latest .
+        run: docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/twebsite:latest .
 
       - name: Push Docker image # This step pushes the built Docker image to the GitHub Container Registry
-        run: docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/tWebsite:latest
+        run: docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/twebsite:latest
