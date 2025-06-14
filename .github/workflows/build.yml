@@ -84,5 +84,5 @@ jobs:
             docker build -t live-nginx .
 
             docker run -d --name nodeapp --network webnet ghcr.io/${{ secrets.GHCR_USERNAME }}/twebsite:latest
-            docker run -d --name nginx --network webnet -p 80:80 live-nginx 
+            docker run -d --name nginx --network webnet -p 80:80 -p 443:443 live-nginx 
           EOF
