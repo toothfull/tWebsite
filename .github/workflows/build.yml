@@ -66,6 +66,9 @@ jobs:
 
 
       - name: SSH into server and redeploy container # This step connects to the server via SSH and redeploys the Docker container
+
+      # This step pulls the latest Docker image, stops and removes existing containers, builds the Nginx image, and runs the new containers
+      # It then stop and removes the existing containers, builds the custome-Nginx image and sets up the weblink through docker, then runs the new both containers.
         run: |
           ssh -i ~/.ssh/id_ed25519 ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
             docker pull ghcr.io/${{ secrets.GHCR_USERNAME }}/twebsite:latest
