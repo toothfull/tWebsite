@@ -77,7 +77,7 @@ jobs:
             
             docker rmi -f live-nginx:latest
 
-            cd /nginx/conf.d
+            cd nginx/conf.d/
             docker build -t live-nginx .
 
             docker run -d --name nodeapp --network webnet ghcr.io/${{ secrets.GHCR_USERNAME }}/twebsite:latest
