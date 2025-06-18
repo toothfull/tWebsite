@@ -89,7 +89,6 @@ jobs:
               --name nginx \
               --network webnet \
               -p 80:80 -p 443:443 \
-              -v /docker/shared/bluemap-web:/usr/share/nginx/html/bluemap \
               live-nginx
             docker update --restart=always nginx
           EOF
