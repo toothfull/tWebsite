@@ -85,6 +85,5 @@ jobs:
 
             docker run -d --name nodeapp --network webnet ghcr.io/${{ secrets.GHCR_USERNAME }}/twebsite:latest
             docker update --restart=always nodeapp
-            docker run -d --name nginx --network webnet -p 80:80 -p 443:443 live-nginx
-            docker update --restart=always nginx
+            docker restart nginx
           EOF
