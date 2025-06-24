@@ -1,13 +1,111 @@
 <!DOCTYPE html>
-<!--Needed to link main.js to html-->
-<script src="scripts/main.js"></script>
 
 <html lang="en">
+<!--Tab Name-->
 <head>
+
+  <!-- Meta tags for responsive design and character encoding -->
   <meta charset="UTF-8" />
-  <title>Hello World TS</title>
+  <title>Toothy.me</title>
+
+  <!--<link rel="icon" type="image/x-icon" href="scripts/favicon.ico" />-->
+
+  <!-- Linking CSS to HTML-->
+  <link rel="stylesheet" href="stylesheets/main.css" />
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <!-- Load Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <!-- Load Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
 </head>
+
 <body>
-  <h1>Website under construction!</h1>
+
+    <!-- Particles.js Background -->
+  <div id="particles-js"></div>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80 },
+        size: { value: 3 },
+        color: { value: "#ffffff" },
+        line_linked: {
+          enable: true,
+          color: "#ffffff"
+        }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" }
+        }
+      }
+    });
+  </script>
+
+  <div class="container">
+    <!-- Header Menu Bar -->
+    <header class="header">
+      <a href="#" class="logo">Toothy.me</a>
+      <nav class="nav">
+        <button class="nav-toggle">&#9776;</button>
+        <div class="nav-links">
+          <a href="#">About</a>
+          <a href="#">Minecraft</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main content grid with two columns -->
+    <main class="main-content">
+      <!-- LEFT COLUMN -->
+      <div class="info">
+        <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">Hey there, I'm Kyle, <br><span>Aka Toothy</span></h1>
+
+        <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">I am a Front/Backend Web Developer</p>
+
+
+        <button class="aboutme" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">About me</button>
+
+        <div class="socials" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+          <a href="https://www.linkedin.com/in/kyle-saffery-5b058b36a/" class="fab fa-linkedin fa-2x"></a>
+          <a href="https://github.com/toothfull" class="fab fa-github fa-2x"></a>
+          <a href="https://www.youtube.com/@toothfull9002/videos" class="fab fa-youtube fa-2x"></a>
+          <a href="mailto:kylesaffery@hotmail.com" class="fas fa-envelope fa-2x"></a>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="profilepicture">
+        <div class="profileImage">
+          <img src="assets/image.jpg" alt="Profile Picture"/>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="notification">
+      <p>Some elements may not work as this website is a work in progress!</p>
+    </footer>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Toothy.me</p>
+    </footer>
+    
+  </div>
+  <!-- Linking javascript to HTML-->
+  <script type="module" src="scripts/main.js"></script>
+
+  <!-- AOS JS Initialise-->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  
 </body>
 </html>

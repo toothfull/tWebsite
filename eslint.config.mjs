@@ -5,14 +5,13 @@ import tseslint from 'typescript-eslint';
 
 export default [
   js.configs.recommended,
-
-  ...tseslint.configs.recommended, // Use recommended rules from TypeScript ESLint
+  ...tseslint.configs.recommended,
 
   {
-    files: ['**/*.ts', '**/*.js'], // Apply to all TypeScript and JavaScript files
-    ignores: ['dist/', 'node_modules/'], // Ignore build and dependency directories
+    files: ['**/*.ts', '**/*.js'],
+    ignores: ['dist/', 'node_modules/'],
 
-    languageOptions: { // Use ECMAScript modules and latest ECMAScript version
+    languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
@@ -21,13 +20,16 @@ export default [
         exports: 'readonly',
         __dirname: 'readonly',
         module: 'readonly',
-        console: 'readonly'
-      }
+        console: 'readonly',
+        // Browser globals (add the ones you need)
+        window: 'readonly',
+        document: 'readonly',
+        // Add more globals here if your code uses them
+      },
     },
 
     rules: {
-      // allow `require()` in Node
       '@typescript-eslint/no-require-imports': 'off',
-    }
-  }
+    },
+  },
 ];

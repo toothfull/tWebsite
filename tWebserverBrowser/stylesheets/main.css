@@ -1,0 +1,267 @@
+/* Reset default margins and paddings and use border-box for consistancy */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set background color and text color globally */
+body{
+    background-color: #121212;
+    color: white; /* Text color for the entire page */
+    font-family: Arial, sans-serif; /* Default font family */
+    font-weight: 600; /* Normal font weight */
+}
+
+#particles-js {
+  position: fixed; /* stays fixed behind the page */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* behind everything */
+}
+
+/* Main wrapper that holds all content */
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* First row for header, second for main content, third for footer */
+    gap: 2rem; /* Space between rows */ /* Rem units are relative to the root font size */
+    padding-bottom: 10px; /* Padding around the container */
+    z-index: 1; /* Ensures everything inside container is above other content */
+}
+
+/* Full height for the container and its children */
+html, body, .container {
+    height: 100%;
+}
+
+/* Header section top bar with logo and navigation */
+.header {
+    display: flex; /* Aligns both the logo and navigation item together */
+    justify-content: space-between; /* Pushes the logo and nav items apart to the furthest sides of the page */
+    align-items: center; /* Vertically centers nav and logo inside the header */
+    border: 1px solid white; /* Border around the header */
+    padding: 0.5rem; /* Padding inside the header */
+    height: 70px;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    background-color: black;
+    color: white; /* Text color for the header */
+}
+
+/* Logo section in the header */
+.logo {
+    padding-left: 10px;
+    text-decoration: none; /* Removes underline from links */
+    color: white; /* Text color for the logo */
+    font-size: 25px;
+}
+
+.nav a {
+    margin-left: 1rem; /* Space between each navigation link */
+    text-decoration: none; /* Removes underline from links */
+    color: white; /* Text color for navigation links */
+    padding: 0.5rem 1rem; /* Padding inside each link */
+    border-radius: 5px; /* Rounded corners for each link */
+    background-color: #239bff; /* Background color for each link */
+}
+
+/* Hide nav toggle button by default */
+.nav-toggle {
+    display: none;  /* Hidden by default, shown on mobile */
+    background: none; /* No background for the toggle button */
+    border: none; /* No border for the toggle button */
+    width: 40px; /* Fixed width for the toggle button */
+    height: 40px; /* Fixed height for the toggle button */
+    padding: 0; /* No padding for the toggle button */
+    margin: 0; /* No margin for the toggle button */
+    font-size: 2rem; /* Font size for the toggle button */
+    line-height: 40px; /* Centers the text vertically */
+    color: white; /* Text color for the toggle button */
+    cursor: pointer; /* Pointer cursor for the toggle button */
+    align-items: center; /* Vertically centers the toggle button */
+    justify-content: center; /* Horizontally centers the toggle button */
+}
+
+/* Container for nav links */
+.nav-links { 
+    display: flex; /* Aligns nav links in a row */
+    margin-left: auto; /* Pushes nav links to the right side of the header */
+    display: flex; /* Aligns nav links in a row */
+    padding-right: 20px;
+}
+
+/* Space links */
+.nav-links a {
+  margin-left: 1rem;
+}
+
+.main-content {
+    display: grid; /* Use grid layout for main content */
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 2rem; /* Space between columns */
+    align-items: center; /* Vertically centers items in each column */
+    max-width: 1000px;     /* Limit total width */
+    margin: 0 auto;        /* Center the grid */
+}
+
+.info {
+  display: flex;  /* Use flexbox for layout */
+  flex-direction: column;   /* Stack elements vertically */
+  gap: 1rem;  /* Space between elements */
+  align-items: flex-start; /* Align text and button to the left */
+}
+
+.info h1{
+    font-size: 2rem; /* Font size for the main title */
+    margin-bottom: 0.1rem; /* Space below the title */
+}
+
+.info p{
+    font-size: 1.2rem; /* Font size for the main title */
+    margin-bottom: 0.1rem; /* Space below the title */
+}
+
+.info span {
+    font-size: 1.2rem; /* Font size for the subtitle */
+    color: #999; /* Lighter color for the subtitle */
+}
+
+.aboutme{
+    align-self: center;  /* Works inside the .info flex column */
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    color: white;
+    width: 200px;
+    background-color: #239bff;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.socials {
+    margin-top: 1rem; /* Space above the social media links */
+    display: flex; /* Aligns social media icons in a row */
+    gap: 1rem; /* Space between each social media icon */
+    justify-content: center; /* Centers the social media icons */
+    align-self: center;  /* Works inside the .info flex column */
+}
+
+.socials a {
+    border: 1px solid white; /* Border around each social media icon */
+    border-radius: 100%; /* Makes the icon circular */
+    text-decoration: none; /* Removes underline from links */
+    text-align: center; /* Centers text inside the icon */
+    color: white; /* Text color for social media links */
+    height: 70px;
+    width: 70px; /* Fixed size for social media icons */
+    display: flex;               /* Enables flexbox */
+    justify-content: center;     /* Centers text horizontally */
+    align-items: center;         /* Centers text vertically */
+}
+
+.profilepicture .profileImage{
+    width: 400px; 
+    height: 400px; /* Fixed sizes for the profile image */
+    background-color: gray; /* Placeholder background color */
+    border-radius: 50%; /* Makes the profile image circular */
+    display: flex; /* Aligns the image inside the container */
+    justify-content: center; /* Centers the image horizontally */
+    align-items: center; /* Centers the image vertically */
+    margin: 0 auto; /* Centers the profile image container */
+    overflow: hidden;           /* Hide anything outside the circle */
+}
+
+.profileImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* Makes sure the image covers the div without distortion */
+  border-radius: 50%;         /* Keeps the image itself circular */
+  display: block;             /* Removes bottom spacing */
+}
+
+.notification {
+    background-color: lightcoral; /* same as body bg */
+    position: sticky;
+    bottom: 0;
+    height: 140%;
+    width: 25%;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Centers content horizontally */
+    border-radius: 10px;
+    
+}
+
+.footer {
+    background-color: #121212; /* same as body bg */
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+    /* Hide nav links by default on mobile */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        margin-top: 1rem;
+
+        background-color: #121212; /* helps see the dropdown */
+        position: absolute; /* Make it a dropdown */
+        top: 50px; /* adjust depending on your header height */
+        left: 0;
+        right: 0;
+        padding: 1rem;
+        border: 1px solid white;
+        z-index: 1000; /* bring to front */
+    }
+
+    /* Show toggle button */
+    .nav-toggle {
+        display: block;
+    }
+
+    /* When nav is active, show links */
+    .nav-links.active {
+        display: flex;
+        background-color: gray; /* helps see the dropdown */
+        border: 0; /* remove border on mobile */
+    }
+
+    /* Adjust links for vertical layout */
+    .nav-links a {
+        margin: 0.5rem 0;
+        margin-left: 0; /* reset margin on mobile */
+    }
+
+    /* Stack columns into a single column on mobile */
+    .main-content {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+
+    .header{
+        position: relative; /* so absolute inside .nav-links works */
+        overflow: visible;  /* don't clip dropdown */
+    }
+    /* Resize profile image placeholder on mobile */
+    .profilepicture .profileImage {
+        width: 300px;
+        height: 300px;
+    }
+
+    /* Center social icons on mobile */
+    .socials {
+        justify-content: center;
+    }
+
+    .notification {
+        width: 40%; /* Make notification wider on mobile */
+        height: 70px; /* Adjust height for mobile */
+    }
+}
