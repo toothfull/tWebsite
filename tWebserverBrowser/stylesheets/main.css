@@ -261,7 +261,7 @@ html, body, .container {
     }
 
     .notification {
-        width: 50%; /* Make notification wider on mobile */
+        width: 60%; /* Make notification wider on mobile */
         height: 150%; /* Adjust height for mobile */
     }
 }
